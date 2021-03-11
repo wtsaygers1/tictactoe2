@@ -1,0 +1,145 @@
+/*
+class Tile {
+    //Model
+    constructor() {
+        //each individual tile will begin with a value of an empty string
+        this.tile = "";
+    }
+
+    //View
+    //the init function should populate individual tiles with empty string
+    //tileClicked function should populate individual tiles with appropriate
+        //"O" or "X" string depending on turn
+
+    //Controller
+
+    // event listener and the function for when a tile is clicked
+    this.tile.addEventListener("click", tileClicked());
+
+function tileClicked() {
+    if (turn === odd) {
+        return this.tile = "X";
+    } else {
+        return this.tile = "O";
+    }
+    this.tile = disabled;
+    // how would moves be connected to each individual tile 
+    moves += moves;
+    
+}
+}
+//helper function for when game is reset -- the tile needs to know that it goes back 
+//to a value of an empty string and this needs to go in the restart button function
+
+// function resetTile() {
+//  tile = "";
+//  tile = enabled;
+//  }
+
+class Grid {
+    //Model
+    constructor() {
+        // I need to push the values of each tile into this array HOW???
+        this.grid = [];
+        // the state of the grid changes with each turn so how do I handle that
+        // in this class/MVC system??
+    }
+    //View
+        //initialize 3x3 grid all with empty strings(but this should be 
+            // coordinated with the Tile class)
+        // view changes every turn but this should be taken care of by 
+            // tileClicked function
+    //Controller
+        //end of game conditions
+    function gameEnd() {
+    for (let moves = 6; moves < 10; moves++) {
+        if (tiles[i] && tiles[i + 1] && tiles[i + 2] === "X" || "O") {
+            return winningMessage
+            all tiles = disabled
+        } else if (tiles[i] && tiles[i + 3] && tiles[i + 6] === "X" || "O") {
+            return winningMessage
+            all tiles = disabled
+        } else if (tiles[0] && tiles[4] && tiles[8] === "X" || "O") {
+            return winningMessage
+            all tiles = disabled
+        } else if (tiles[2] && tiles[4] && tiles[6] === "X" || "O") {
+            return winningMessage
+            all tiles = disabled
+        } else if (moves === 10) {
+            return tieMessage
+            all tiles = disabled
+        } else {
+            switchTurns
+        }
+    }
+}
+
+}
+
+class App {
+    //Model
+    constructor() {
+        this.header = "TicTacToe";
+        this.players = "PlayerX...PlayerO";
+        this.rstBtn = btn;
+        this.modal = ""; (stretch)
+        this.moves = 1;
+    }
+    //View
+    once everything is initialized, the grid needs update its view every turn
+    How ??
+    //Controller
+    generateHTML(type, classes, parent, text = "", id) {
+    const element = document.createElement(type);
+    element.className = (classes);
+    element.innerText = (text);
+    element.id = id;
+    parent.appendChild(element);
+    return element;
+}
+header() {
+    let container = generateHTML("div", "container", myApp);
+    // this row is specific to this header
+    let row = generateHTML("div", "row", container);
+    generateHTML("h1", "header text-center", row, "TicTacToe");
+}
+players() {
+    // this row is specific to the players
+    let row = generateHTML("div", "row", container);
+    // this column is specific to the row that has players
+    let col = generateHTML("div", "col-6", row);
+    generateHTML("div", "player text-center top-0 start-0", col, "PlayerX");
+    // just call the row already created
+    col = generateHTML("div", "col-6", row);
+    generateHTML("div", "player text-center top-0 end-0", col, "PlayerO");
+}
+grid() {
+    let row = generateHTML("div", "row", container);
+    for (let i = 0; i < 9; i++) {
+        generateHTML("div", "col-4 border", row, "X or O", "tile-" + i);
+        console.log(i);
+    }
+}
+rstBtn() {
+    let row = generateHTML("div", "row", container);
+    generateHTML("button", "btn btn-primary", row, "Restart", "restart")
+    // resetTile() function will need to execute every time restart button clicked
+}
+
+render(){
+    header()
+    players()
+    grid()
+    rstBtn()
+}
+
+this.rstBtn.addEventListener("click", init);
+
+}
+
+function init() {
+    this.moves;
+    this.turn;
+    render();
+}
+*/
