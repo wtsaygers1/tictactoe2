@@ -5,10 +5,18 @@ const players = [];
 class Tile {
     // the arguments of the constructor are what will be customized when a 
     // new object is created from this class
-    constructor(id, tileText) {
+    constructor(id) {
         this.id = id;
-        this.tileText = tileText;
+        // this.tileText = tileText;
         this.clicked = false;
+        this.HTML = "";
+        this.symbol = "";
+    }
+    // this is linked with the clickTile in Grid class
+    changeMoves(gridSymbol) {
+        this.symbol = gridSymbol;
+        this.HTML.innerHTML = this.symbol
+        console.log();
     }
 }
 
@@ -21,10 +29,6 @@ class Grid {
     }
     renderGrid() {
         this.gameView();
-
-        // this.header();
-        // this.players();
-        // this.gameArea();
     }
     // boiler plate for html elements (is this a helper function or method???)
     generateHTML(type, classes, parent = app, text = "", id = "") {
@@ -44,38 +48,41 @@ class Grid {
         const plO = this.generateHTML("div", "col-6 text-center", players, "PlayerO", "O");
         const gameArea = this.generateHTML("div", "row", container, "", "gameGrid");
         for (let index = 0; index < 9; index++) {
-            const cols = this.generateHTML("div", "col-4 border text-center", gameArea, "-", "happyTile-" + index);
-            let tileObj = new Tile(index);
-            console.log(tileObj);
+            const playSpaces = this.generateHTML("div", "col-4 border text-center", gameArea, "-", index);
+            let uniqueTiles = new Tile(index);
+            // the individual tiles
+            console.log(uniqueTiles);
+            // HTML info
+            // console.log(playSpaces.id);
+            playSpaces.addEventListener("click", e => this.clickTile(index));
+            console.log(this);
+            uniqueTiles.HTML = playSpaces;
+            this.tileArray.push(uniqueTiles);
+            // console.log(this.tileArray);
         }
         const restartBtn = this.generateHTML("button", "row position-relative top-0 start-50", container, "Restart", "restart");
     }
-// WET version of gameView()
-    // header() {
-    //     let container = this.generateHTML("div", "container", app, "", "contain");
-    //     let row = this.generateHTML("div", "row", container);
-    //     this.generateHTML("h1", "header text-center", row, "TicTacToe");
-    // }
-    // players() {
-    //     // container is undefined, creates a new container, or this row is just 
-    //     // a child of app (the current case)
-    //     // how can I make this row a child of the container??
-    //     let row = this.generateHTML("div", "row", app);
-    //     let col = this.generateHTML("div", "col-6", row);
-    //     this.generateHTML("div", "player text-center top-0 start-0", col, "PlayerX");
-    //     col = this.generateHTML("div", "col-6", row);
-    //     this.generateHTML("div", "player text-center top-0 start-0", col, "PlayerO");
-    // }
-    // gameArea() {
-    //     // same issue with container as players()
-    //     let row = this.generateHTML("div", "row", app);
-    //     for (let i = 0; i < 9; i++) {
-    //         this.generateHTML("div", "col-4 border text-center", row, "X or O", "happyTile-" + i);
-    //     }
-    //     // let tileObj = new Tile(i, col);
-    //     // let tileObj = this.tileArray.push(tileObj);
-    // }
-    
+
+    clickTile(index) {
+        if (this.tileArray[index].clicked === false) {
+            this.tileArray[index].clicked = true
+            if (this.moves % 2 === 0) {
+                this.symbol = "X"
+            } else {
+                this.symbol = "O"
+            }
+            // console.log(this.symbol)
+            // this is linked with changeMoves in Tile class
+            this.tileArray[index].changeMoves(this.symbol);
+            // console.log("whatever", obj)
+            // console.log(this.tileArray)
+            this.moves++;
+            // console.log(this.moves);
+            console.log(this.tileArray[index].clicked);
+            console.log(this);
+        }
+    }
+
 }
 
 // the init function is declared in the global because it initializes the page once
