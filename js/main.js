@@ -20,8 +20,11 @@ class Grid {
         // revisit this b/c will probably need more in this constructor
     }
     renderGrid() {
-        this.header();
-        this.players();
+        this.gameView();
+
+        // this.header();
+        // this.players();
+        // this.gameArea();
     }
     // boiler plate for html elements (is this a helper function or method???)
     generateHTML(type, classes, parent = app, text = "", id = "") {
@@ -32,21 +35,47 @@ class Grid {
         parent.appendChild(element);
         return element;
     }
-    header() {
-        let container = this.generateHTML("div", "container", app, "", "contain");
-        let row = this.generateHTML("div", "row", container);
-        this.generateHTML("h1", "header text-center", row, "TicTacToe");
+    gameView() {
+        const container = this.generateHTML("div", "container", app, "", "mainContain");
+        const rowTit = this.generateHTML("div", "row", container);
+        const title = this.generateHTML("h1", "header text-center", rowTit, "TicTacToe", "title");
+        const players = this.generateHTML("div", "row", container, "", "pRow");
+        const plX = this.generateHTML("div", "col-6 text-center", players, "PlayerX", "X");
+        const plO = this.generateHTML("div", "col-6 text-center", players, "PlayerO", "O");
+        const gameArea = this.generateHTML("div", "row", container, "", "gameGrid");
+        for (let index = 0; index < 9; index++) {
+            const cols = this.generateHTML("div", "col-4 border text-center", gameArea, "-", "happyTile-" + index);
+            let tileObj = new Tile(index);
+            console.log(tileObj);
+        }
+        const restartBtn = this.generateHTML("button", "row position-relative top-0 start-50", container, "Restart", "restart");
     }
-    players() {
-        // container is undefined, creates a new container, or this row is just 
-        // a child of app (the current case)
-        // how can I make this row a child of the container??
-        let row = this.generateHTML("div", "row", app);
-        let col = this.generateHTML("div", "col-6", row);
-        this.generateHTML("div", "player text-center top-0 start-0", col, "PlayerX");
-        col = this.generateHTML("div", "col-6", row);
-        this.generateHTML("div", "player text-center top-0 start-0", col, "PlayerO");
-    }
+// WET version of gameView()
+    // header() {
+    //     let container = this.generateHTML("div", "container", app, "", "contain");
+    //     let row = this.generateHTML("div", "row", container);
+    //     this.generateHTML("h1", "header text-center", row, "TicTacToe");
+    // }
+    // players() {
+    //     // container is undefined, creates a new container, or this row is just 
+    //     // a child of app (the current case)
+    //     // how can I make this row a child of the container??
+    //     let row = this.generateHTML("div", "row", app);
+    //     let col = this.generateHTML("div", "col-6", row);
+    //     this.generateHTML("div", "player text-center top-0 start-0", col, "PlayerX");
+    //     col = this.generateHTML("div", "col-6", row);
+    //     this.generateHTML("div", "player text-center top-0 start-0", col, "PlayerO");
+    // }
+    // gameArea() {
+    //     // same issue with container as players()
+    //     let row = this.generateHTML("div", "row", app);
+    //     for (let i = 0; i < 9; i++) {
+    //         this.generateHTML("div", "col-4 border text-center", row, "X or O", "happyTile-" + i);
+    //     }
+    //     // let tileObj = new Tile(i, col);
+    //     // let tileObj = this.tileArray.push(tileObj);
+    // }
+    
 }
 
 // the init function is declared in the global because it initializes the page once
