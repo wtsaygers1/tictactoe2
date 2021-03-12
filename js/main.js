@@ -1,13 +1,11 @@
 const app = document.getElementById("app");
 
-const players = [];
 
 class Tile {
     // the arguments of the constructor are what will be customized when a 
     // new object is created from this class
     constructor(id) {
         this.id = id;
-        // this.tileText = tileText;
         this.clicked = false;
         this.HTML = "";
         this.symbol = "";
@@ -15,8 +13,8 @@ class Tile {
     // this is linked with the clickTile in Grid class
     changeMoves(gridSymbol) {
         this.symbol = gridSymbol;
-        this.HTML.innerHTML = this.symbol
-        console.log();
+        this.HTML.innerHTML = this.symbol;
+        // console.log();
     }
 }
 
@@ -25,6 +23,8 @@ class Grid {
         this.tileArray = [];
         this.symbol = "";
         this.moves = 0;
+        // this.winner = "";
+        // this.winConditions[[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
         // revisit this b/c will probably need more in this constructor
     }
     renderGrid() {
@@ -78,11 +78,31 @@ class Grid {
             // console.log(this.tileArray)
             this.moves++;
             // console.log(this.moves);
-            console.log(this.tileArray[index].clicked);
-            console.log(this);
+            // console.log(this.tileArray[index].clicked);
+            // console.log(this);
+            // this.checkWin();
         }
     }
 
+    // checkWin() {
+    //     for (let index = 0; index.winConditions.length; index++) {
+    //         let winArrays = this.winConditions[index];
+    //         let index0 = winArrays[0];
+    //         let index1 = winArrays[1];
+    //         let index2 = winArrays[2];
+    //         if (this.tileArray[index0].symbol == "X" && this.tileArray[index1].symbol == "X" && this.tileArray[index2].symbol == "X") {
+    //             this.winner = "X";
+    //         }
+    //         if (this.tileArray[index0].symbol == "O" && this.tileArray[index1].symbol == "O" && this.tileArray[index2].symbol == "X") {
+    //             this.winner = "O";
+    //         }
+    //         if (this.moves == 9 && this.winner.length !== 1) {
+    //             this.winner = "Tie";
+    //         }
+    //         console.log(this.winner)
+    //         return this.winner;
+    //     }
+    // }
 }
 
 // the init function is declared in the global because it initializes the page once
